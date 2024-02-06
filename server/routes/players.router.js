@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     pool
       .query(queryText)
       .then((result) => {
-        console.log("results", result);
+        console.log("players.router GET results", result);
         res.send(result.rows)
       })
       .catch((err) => {
