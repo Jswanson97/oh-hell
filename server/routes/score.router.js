@@ -5,7 +5,8 @@ const router = express.Router();
 router.get('/', (req, res) => {
     const queryText = `
     SELECT * FROM "score"
-    WHERE "round" = 5;
+    WHERE "round" = 4
+    ORDER BY "score"."score" DESC;
     `;
 
     // add ability to query against current round
