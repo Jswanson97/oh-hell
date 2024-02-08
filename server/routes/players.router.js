@@ -46,7 +46,7 @@ router.get('/', (req, res) => {
     DELETE FROM "players"
     WHERE "id" = $1;
     `;
-    console.log(req.params.id)
+    console.log('req.params',req.params.id)
     const queryParams = [req.params.id];
     pool
         .query(queryText, queryParams)

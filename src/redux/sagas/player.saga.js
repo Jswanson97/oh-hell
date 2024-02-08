@@ -4,7 +4,7 @@ import axios from 'axios';
 function* getPlayers (action) {
     try {
         const response = yield axios.get('/api/players')
-        console.log('response in plaers.saga GET:', response);
+        console.log('response in players.saga GET:', response);
         yield put({
             type: 'SET_PLAYERS', 
             payload: response.data
@@ -16,6 +16,7 @@ function* getPlayers (action) {
 }
 
 function* deletePlayers (action) {
+    console.log('action.payload', action.payload)
     try {
         yield axios.delete(`/api/players/${action.payload}`)
         yield put ({ type: 'FETCH_PLAYERS'})
