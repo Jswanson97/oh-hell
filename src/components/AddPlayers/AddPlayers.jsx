@@ -24,6 +24,7 @@ function PostPlayer() {
     dispatch({type:'POST_ALL_PLAYERS'})
     history.push('/game')
   }
+  
 
   return (
     <div>
