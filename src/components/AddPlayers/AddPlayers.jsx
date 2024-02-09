@@ -5,14 +5,21 @@ import {useSelector, useDispatch} from 'react-redux';
 function PostPlayer() {
  
   const playerStore = useSelector((store) => store.player);
+  const gameStore = useSelector((store) => store.createGame)
   const [player, setPlayer] = useState('');
   const dispatch = useDispatch()
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
     const objectExporting = {id: playerStore.id, name: player}
 
     dispatch({type:'POST_PLAYERS', payload: objectExporting})
     dispatch({type:'FETCH_PLAYERS'})
+    setPlayer(event.target.value)
+    setPlayer('');
+  }
+
+  const submitPlayers = (event) => {
+    dispatch({type:'POST_ALL_PLAYERS'})
   }
 
   return (
@@ -26,6 +33,7 @@ function PostPlayer() {
             ></input>
             <button onClick={handleSubmit}>Add player</button>
         </div>
+        <button onClick={submitPlayers}>Submit</button>
     </div>
   );
 }
