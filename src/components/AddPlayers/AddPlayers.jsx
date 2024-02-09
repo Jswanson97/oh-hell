@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 function PostPlayer() {
  
-  const playerStore = useSelector((store) => store.player);
-  const gameStore = useSelector((store) => store.createGame)
-  const [player, setPlayer] = useState('');
-  const dispatch = useDispatch()
+    const history = useHistory()
+    const playerStore = useSelector((store) => store.player);
+    const gameStore = useSelector((store) => store.createGame)
+    const [player, setPlayer] = useState('');
+    const dispatch = useDispatch()
 
   const handleSubmit = (event) => {
     const objectExporting = {id: playerStore.id, name: player}
@@ -20,6 +22,7 @@ function PostPlayer() {
 
   const submitPlayers = (event) => {
     dispatch({type:'POST_ALL_PLAYERS'})
+    history.push('/game')
   }
 
   return (

@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import CreateGame from '../CreateGamePage/CreateGamePage';
+import Game from '../Game/Game';
 
 import './App.css';
 
@@ -88,6 +89,12 @@ function App() {
             path="/createGame">
               <CreateGame />
 
+            </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/game">
+              <Game />
             </ProtectedRoute>
 
           <Route
