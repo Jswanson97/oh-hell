@@ -10,12 +10,18 @@ function UserPage() {
   const handleClick = () => {
     history.push('/createGame')
   }
+  const onClick = () => {
+    history.push('/gameHistory')
+  }
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
       <button onClick={handleClick}>
         Create Game
+        </button>
+        <button onClick={onClick}>
+        Game History
         </button>
       <LogOutButton className="btn" />
     </div>

@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import CreateGame from '../CreateGamePage/CreateGamePage';
 import Game from '../Game/Game';
+import GameHistory from '../GameHistory/GameHistory';
 
 import './App.css';
 
@@ -95,6 +96,12 @@ function App() {
             exact
             path="/game">
               <Game />
+            </ProtectedRoute>
+
+            <ProtectedRoute
+            exact
+            path="/gameHistory">
+              <GameHistory />
             </ProtectedRoute>
 
           <Route

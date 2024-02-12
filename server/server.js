@@ -12,6 +12,7 @@ const userRouter = require('./routes/user.router');
 const playersRouter = require('./routes/players.router');
 const scoreRouter = require('./routes/score.router');
 const gameRouter = require('./routes/createGame.router')
+const gameHistoryRouter = require('./routes/gameHistory.router')
 
 // Express Middleware
 app.use(express.json());
@@ -30,6 +31,7 @@ app.use('/api/user', userRouter);
 app.use('/api/players', playersRouter);
 app.use('/api/score', scoreRouter);
 app.use('/api/game', gameRouter);
+app.use('/api/gameHistory', gameHistoryRouter);
 
 // Listen Server & Port
 app.listen(PORT, () => {
