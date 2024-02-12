@@ -8,6 +8,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import PlayerReducer from "../PlayerReducer/PlayerReducer";
+
 
 function Game() {
   const dispatch = useDispatch();
@@ -67,25 +69,9 @@ function Game() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {player.map((row) => (
-              <TableRow
-                key={row.name}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell align="right">{row.score}</TableCell>
-                <TableCell align="right">
-                  <input />
-                </TableCell>
-                <TableCell align="right">
-                  <button>Made it</button>
-                </TableCell>
-                <TableCell align="right">
-                  <button>Busted</button>
-                </TableCell>
-              </TableRow>
+            {player.map((player, i) => (
+
+             <PlayerReducer key={i} row={player}/>
             ))}
           </TableBody>
         </Table>

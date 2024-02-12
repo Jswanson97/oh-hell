@@ -37,7 +37,7 @@ function PostPlayer() {
             ></input>
             <button onClick={handleSubmit}>Add player</button>
         </div>
-        <button onClick={submitPlayers}>Submit</button>
+        <button onClick={submitPlayers}>Start Game</button>
     </div>
   );
 }
