@@ -1,35 +1,44 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
+import React, { useState } from "react";
 import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
+import { useDispatch } from "react-redux";
 
-function PlayerReducer({row}) {
-    return(
-<TableRow
-                key={row.name}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell align="right">{row.score}</TableCell>
-                <TableCell align="right">
-                  <input />
-                </TableCell>
-                <TableCell align="right">
-                  <button>Made it</button>
-                </TableCell>
-                <TableCell align="right">
-                  <button>Busted</button>
-                </TableCell>
-              </TableRow>
-    )
+function PlayerReducer({ row }) {
+    const dispatch = useDispatch()
+  const [madeIt, setMadeIt] = useState(true);
+  //console.log("ROW:", row);
+  const handleClick = () => {
+    setMadeIt(!madeIt);
+    dispatch({type: 'TOGGLE_MADE_IT', payload: row.id})
+  };
+// calling a saga which will perform an axios.patch() 
+// that sends an ID to the DB which toggles made_it true/false
+
+
+  return (
+    <TableRow
+      key={row.name}
+      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+    >
+      <TableCell component="th" scope="row">
+        {row.name}
+      </TableCell>
+      <TableCell align="right">{row.score}</TableCell>
+      <TableCell align="right">
+        <input />
+      </TableCell>
+      <TableCell align="right">
+        <Button
+          onClick={handleClick}
+          variant="contained"
+          color={madeIt ? "primary" : "secondary"}
+        >
+          {madeIt ? "Made it" : "Busted"}
+        </Button>
+      </TableCell>
+    </TableRow>
+  );
 }
 
 export default PlayerReducer;

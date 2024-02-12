@@ -36,13 +36,24 @@ function* postPlayers (action) {
     catch (err) {
         console.log('error posting player:', err)
     }
-}   
+}
+
+function* busted (action) {
+    try {
+        console.log('action.payload:', action.payload)
+        yield axios.patch(`/api/players/made_it/${action.payload}`)
+    }
+    catch (err) {
+        console.log('error updating made it/ busted', err)
+    }
+}
 
 
 function* playerSaga() {
     yield takeLatest ('FETCH_PLAYERS', getPlayers)
     yield takeLatest ('DELETE_PLAYERS', deletePlayers)
     yield takeLatest ('POST_PLAYERS', postPlayers)
+    yield takeLatest ('TOGGLE_MADE_IT', busted)
 }
 
 export default playerSaga

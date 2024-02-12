@@ -65,7 +65,6 @@ function Game() {
               <TableCell align="right">Score</TableCell>
               <TableCell align="right">Bid</TableCell>
               <TableCell align="right">Made it</TableCell>
-              <TableCell align="right">Busted</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
