@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 function PlayerReducer({ row }) {
     const dispatch = useDispatch()
   const [madeIt, setMadeIt] = useState(true);
+  const [input, setInput] = useState("");
   //console.log("ROW:", row);
   const handleClick = () => {
     setMadeIt(!madeIt);
@@ -26,7 +27,7 @@ function PlayerReducer({ row }) {
       </TableCell>
       <TableCell align="right">{row.score}</TableCell>
       <TableCell align="right">
-        <input />
+        <input onInput={event => {setInput(event.nativeEvent.target.value);console.log('input:', input)}}/>
       </TableCell>
       <TableCell align="right">
         <Button

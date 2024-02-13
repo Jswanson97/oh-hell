@@ -31,23 +31,13 @@ function Game() {
     return combinedArray;
   };
 
-  const [gameTurns, setGameTurns] = useState([]);
-  const [currentTurn, setCurrentTurn] = useState(0);
+  const gameTurns = 6;
+  const [currentTurn, setCurrentTurn] = useState(gameTurns);
 
-  useEffect(() => {
-    const round = 6; // replace this whatever is in the input field
-    const turns = createReversedArray(round);
-    setGameTurns(turns);
-  }, []);
-
-  const displayTurn = (turnIndex) => {
-    console.log("Current turn:", gameTurns[turnIndex]);
-  };
 
   const nextTurn = () => {
-    if (currentTurn < gameTurns.length) {
-      displayTurn(currentTurn);
-      setCurrentTurn(currentTurn + 1);
+    if (currentTurn > gameTurns * -1) {
+      setCurrentTurn(currentTurn - 1);
     } else {
       console.log("Game Over!");
       // Redirect to winner screen after last turn
@@ -56,7 +46,7 @@ function Game() {
 
   return (
     <div>
-      <header align="center">Round #{gameTurns[currentTurn]}</header>
+      <header align="center">Round #{currentTurn == 0 ?'1' : Math.abs(currentTurn)}</header>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
