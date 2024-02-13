@@ -4,8 +4,8 @@ const router = express.Router();
 
 router.post("/", (req,res) => {
     const queryText = `
-    INSERT INTO "score" ("player", "round", "game_id", "made_it")
-    SELECT "name", 0, 2, false
+    INSERT INTO "score" ("id","player", "round", "game_id", "made_it")
+    SELECT "id", "name", 0, 1, false
     FROM "players";
     `;
     console.log("req", req)
