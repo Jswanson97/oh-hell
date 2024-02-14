@@ -24,18 +24,19 @@ function Game() {
     dispatch({ type: "FETCH_PLAYERS" });
   };
 
-  const createReversedArray = (round) => {
-    const gameArray = Array.from({ length: round }, (_, index) => index + 1);
-    const reversedArray = gameArray.slice().reverse();
-    const combinedArray = reversedArray.concat(gameArray);
-    return combinedArray;
-  };
+  // const createReversedArray = (round) => {
+  //   const gameArray = Array.from({ length: round }, (_, index) => index + 1);
+  //   const reversedArray = gameArray.slice().reverse();
+  //   const combinedArray = reversedArray.concat(gameArray);
+  //   return combinedArray;
+  // };
 
   const gameTurns = 6;
   const [currentTurn, setCurrentTurn] = useState(gameTurns);
 
 
   const nextTurn = () => {
+    //add SQL query here to add score + input
     if (currentTurn > gameTurns * -1) {
       setCurrentTurn(currentTurn - 1);
     } else {
