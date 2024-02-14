@@ -48,12 +48,22 @@ function* busted (action) {
     }
 }
 
+function* updateScore (action) {
+    try {
+        yield axios.patch('/api/players/score')
+    }
+    catch (err) {
+        console.log('error updating /score')
+    }
+}
+
 
 function* playerSaga() {
     yield takeLatest ('FETCH_PLAYERS', getPlayers)
     yield takeLatest ('DELETE_PLAYERS', deletePlayers)
     yield takeLatest ('POST_PLAYERS', postPlayers)
     yield takeLatest ('TOGGLE_MADE_IT', busted)
+    yield takeLatest ('UPDATE_SCORE', updateScore)
 }
 
 export default playerSaga

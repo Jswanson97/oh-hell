@@ -37,6 +37,7 @@ function Game() {
 
   const nextTurn = () => {
     //add SQL query here to add score + input
+    dispatch({ type: 'UPDATE_SCORE' })
     if (currentTurn > gameTurns * -1) {
       setCurrentTurn(currentTurn - 1);
     } else {

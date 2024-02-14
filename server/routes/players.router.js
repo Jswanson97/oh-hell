@@ -79,4 +79,22 @@ router.patch("/made_it/:id", (req, res) => {
     });
 });
 
+router.patch("/score", (req, res) => {
+  const queryText = `
+  UPDATE "score"
+  SET "score" = "score" + 10
+  WHERE "made_it" = true;
+  `;
+
+  pool
+    .query(queryText)
+    .then((result) => {
+      res.sendStatus(201)
+    })
+    .catch((err) => {
+      console.log('error in players.router router.patch /score')
+      res.sendStatus(500)
+    })
+});
+
 module.exports = router;
