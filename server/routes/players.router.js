@@ -97,4 +97,19 @@ router.patch("/score", (req, res) => {
     })
 });
 
+router.get("/finale", (req, res) => {
+  const queryText = `
+  SELECT "score", "player" FROM "score"
+  ORDER BY "score" DESC;
+  `;
+  pool
+  .query(queryText)
+  .then((result) => {
+    res.sendStatus(201)
+  })
+  .catch((err) => {
+    res.sendStatus(500)
+  })
+});
+
 module.exports = router;

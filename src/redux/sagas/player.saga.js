@@ -57,6 +57,15 @@ function* updateScore (action) {
     }
 }
 
+function* finaleScore (action) {
+    try {
+        yield axios.get('/api/players/finale')
+    }
+    catch (err) {
+        console.log('error getting finale score')
+    }
+}
+
 
 function* playerSaga() {
     yield takeLatest ('FETCH_PLAYERS', getPlayers)
@@ -64,6 +73,7 @@ function* playerSaga() {
     yield takeLatest ('POST_PLAYERS', postPlayers)
     yield takeLatest ('TOGGLE_MADE_IT', busted)
     yield takeLatest ('UPDATE_SCORE', updateScore)
+    yield takeLatest ('GET_FINALE_SCORE', finaleScore)
 }
 
 export default playerSaga

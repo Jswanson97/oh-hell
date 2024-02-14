@@ -42,6 +42,7 @@ function Game() {
       setCurrentTurn(currentTurn - 1);
     } else {
       console.log("Game Over!");
+      dispatch({ type: 'GET_FINALE_SCORE' });
       // Redirect to winner screen after last turn
     }
   };
