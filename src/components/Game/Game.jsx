@@ -43,6 +43,7 @@ function Game() {
     } else {
       console.log("Game Over!");
       dispatch({ type: 'GET_FINALE_SCORE' });
+      history.push('/endOfGame')
       // Redirect to winner screen after last turn
     }
   };

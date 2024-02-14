@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import CreateGame from '../CreateGamePage/CreateGamePage';
 import Game from '../Game/Game';
 import GameHistory from '../GameHistory/GameHistory';
+import EndOfGame from '../EndOfGame/EndOfGame';
 
 import './App.css';
 
@@ -102,6 +103,12 @@ function App() {
             exact
             path="/gameHistory">
               <GameHistory />
+            </ProtectedRoute>
+
+            <ProtectedRoute
+            exact
+            path="/endOfGame">
+              <EndOfGame />
             </ProtectedRoute>
 
           <Route
