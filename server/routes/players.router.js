@@ -105,7 +105,7 @@ router.get("/finale", (req, res) => {
   pool
   .query(queryText)
   .then((result) => {
-    res.sendStatus(201)
+    res.send(result.rows)
   })
   .catch((err) => {
     res.sendStatus(500)
