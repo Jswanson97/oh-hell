@@ -11,8 +11,18 @@ function* busted (action) {
     }
 }
 
+function* deleteScore (action) {
+    try {
+        yield axios.delete('/api/score/delete')
+    }
+    catch (err) {
+        console.log('error deleting players from score table')
+    }
+}
+
 function* scoreSaga() {
     yield takeLatest ('TOGGLE_MADE_IT', busted)
+    yield takeLatest ('DELETE_ALL_SCORE', deleteScore)
 }
 
 export default scoreSaga;

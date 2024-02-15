@@ -32,7 +32,7 @@ return (
             return (
                 <div id={item.id} key={i}>
                     <p value='text'>{item.name}</p>
-                    <p value='int'>{item.score}</p>
+                    <p value='integer'>{item.score}</p>
                     
                 </div>
             )

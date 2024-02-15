@@ -2,28 +2,21 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.delete('/delete', (req,res) => {
     const queryText = `
-    SELECT * FROM "score"
-    WHERE "round" = 4
-    ORDER BY "score"."score" DESC;
+    DELETE FROM "score"
+    WHERE "id" = "id";
     `;
-
-    // add ability to query against current round
-    //const queryParams = [req.body]
-
-
+    console.log('req.body', req.body)
     pool
-        .query(queryText)
-        .then((result) => {
-            console.log("score.router GET results:", result)
-            res.send(result.rows)
-        })
-        .catch((err) => {
-            console.log("Error getting scores:", err)
-            res.sendStatus(500);
-        })
-});
+      .query(queryText)
+      .then(() => {
+        res.sendStatus(202)
+      })
+      .catch((err) => {
+        res.sendStatus(500)
+      })
+  });
 
 
 

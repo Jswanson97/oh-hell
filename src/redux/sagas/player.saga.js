@@ -57,21 +57,12 @@ function* updateScore (action) {
     }
 }
 
-function* finaleScore (action) {
+function* finaleScore () {
     try {
         yield axios.get('/api/players/finale')
     }
     catch (err) {
         console.log('error getting finale score')
-    }
-}
-
-function* deleteScore (action) {
-    try {
-        yield axios.delete('/api/players/resetScore')
-    }
-    catch (err) {
-        console.log('error deleting players from score table')
     }
 }
 
@@ -83,7 +74,6 @@ function* playerSaga() {
     yield takeLatest ('TOGGLE_MADE_IT', busted)
     yield takeLatest ('UPDATE_SCORE', updateScore)
     yield takeLatest ('GET_FINALE_SCORE', finaleScore)
-    yield takeLatest ('DELETE_ALL_SCORE', deleteScore)
 }
 
 export default playerSaga

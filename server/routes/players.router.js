@@ -112,19 +112,4 @@ router.get("/finale", (req, res) => {
   })
 });
 
-router.delete('/resetScore', (req,res) => {
-  const queryText = `
-  DELETE FROM "score"
-  WHERE "id" = "id";
-  `;
-  pool
-    .query(queryText)
-    .then((result) => {
-      res.sendStatus(202)
-    })
-    .catch((err) => {
-      res.sendStatus(500)
-    })
-});
-
 module.exports = router;
