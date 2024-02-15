@@ -9,11 +9,13 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import PlayerReducer from "../PlayerReducer/PlayerReducer";
+import postScoreReducer from "../../redux/reducers/PostScore.reducer";
 
 
 function Game() {
   const dispatch = useDispatch();
   const player = useSelector((store) => store.player);
+  const postScore = useSelector((store) => store.postScoreReducer)
   const history = useHistory();
 
   useEffect(() => {
@@ -22,6 +24,7 @@ function Game() {
 
   const getPlayers = () => {
     dispatch({ type: "FETCH_PLAYERS" });
+    dispatch({ type: "POST_SCORE" });
   };
 
   // const createReversedArray = (round) => {
@@ -62,7 +65,7 @@ function Game() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {player.map((player, i) => (
+            {postScore.map((player, i) => (
 
              <PlayerReducer key={i} row={player}/>
             ))}

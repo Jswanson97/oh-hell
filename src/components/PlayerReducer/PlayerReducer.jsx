@@ -12,6 +12,7 @@ function PlayerReducer({ row }) {
   const handleClick = () => {
     setMadeIt(!madeIt);
     dispatch({type: 'TOGGLE_MADE_IT', payload: row.id})
+    dispatch({type: 'POST_SCORE'})
   };
 // calling a saga which will perform an axios.patch() 
 // that sends an ID to the DB which toggles made_it true/false
@@ -23,7 +24,7 @@ function PlayerReducer({ row }) {
       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
       <TableCell component="th" scope="row">
-        {row.name}
+        {row.player}
       </TableCell>
       <TableCell align="right">{row.score}</TableCell>
       <TableCell align="right">

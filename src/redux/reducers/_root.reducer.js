@@ -4,6 +4,7 @@ import user from './user.reducer';
 import player from './players.reducer';
 import createGame from './createGame.reducer';
 import gameHistoryReducer from './gameHistory.reducer';
+import postScoreReducer from './PostScore.reducer';
 
 
 // rootReducer is the primary reducer for our entire project
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   player, 
   createGame,
   gameHistoryReducer,
+  postScoreReducer,
 });
 
 export default rootReducer;

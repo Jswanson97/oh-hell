@@ -1,4 +1,4 @@
-import { put, take, takeLatest } from 'redux-saga/effects';
+import { put, take, takeLatest, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* busted (action) {
@@ -20,9 +20,20 @@ function* deleteScore (action) {
     }
 }
 
+function* postScore (action) {
+    try {
+        const scoreResponse = yield axios.get('/api/score/postScore')
+        yield put ({ type: 'SET_POST_SCORE', payload: scoreResponse.data})
+    }
+    catch (err) {
+        console.log('error in post score', err)
+    }
+}
+
 function* scoreSaga() {
     yield takeLatest ('TOGGLE_MADE_IT', busted)
     yield takeLatest ('DELETE_ALL_SCORE', deleteScore)
+    yield takeEvery ('POST_SCORE', postScore)
 }
 
 export default scoreSaga;

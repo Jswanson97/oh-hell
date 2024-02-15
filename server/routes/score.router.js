@@ -18,6 +18,22 @@ router.delete('/delete', (req,res) => {
       })
   });
 
+  router.get('/postScore', (req, res) => {
+    const queryText = `
+    SELECT "score", "player", "id" FROM "score"
+    ORDER BY "score" DESC;
+    `;
+    pool
+        .query(queryText)
+        .then((response) => {
+            res.send(response.rows)
+            // res.sendStatus(200)
+        })
+        .catch((err) => {
+            res.sendStatus(500)
+        })
+  })
+
 
 
 module.exports = router;
