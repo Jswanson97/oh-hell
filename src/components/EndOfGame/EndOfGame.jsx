@@ -10,18 +10,20 @@ function EndOfGame ()  {
 
     useEffect(() => {
         getScore();
-    }, [])    
+    }, []);
 
     const getScore = () => {
         dispatch({ type: 'GET_FINALE_SCORE'})
-    }
+    };
 
     const playAgain = () => {
+        dispatch({ type: 'DELETE_ALL_SCORE'})
         history.push('/createGame')
-    }
+    };
     const endGame = () => {
-        history.push('/user')
-    }
+        dispatch({ type: 'DELETE_ALL_SCORE'})
+        history.push('/user')   
+    };
 return (
     <div className='container'>
         <h1>This is the end of the game</h1>
