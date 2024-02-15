@@ -20,7 +20,7 @@ router.delete('/delete', (req,res) => {
 
   router.get('/postScore', (req, res) => {
     const queryText = `
-    SELECT "score", "player", "id" FROM "score"
+    SELECT "score", "player", "id", "made_it" FROM "score"
     ORDER BY "score" DESC;
     `;
     pool

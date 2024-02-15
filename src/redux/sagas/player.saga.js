@@ -38,10 +38,20 @@ function* postPlayers (action) {
     }
 }
 
-function* busted (action) {
+function* madeIt (action) {
     try {
         console.log('action.payload:', action.payload)
         yield axios.patch(`/api/players/made_it/${action.payload}`)
+    }
+    catch (err) {
+        console.log('error updating made it/ busted', err)
+    }
+}
+
+function* busted (action) {
+    try {
+        console.log('action.payload:', action.payload)
+        yield axios.patch(`/api/players/busted/${action.payload}`)
     }
     catch (err) {
         console.log('error updating made it/ busted', err)
@@ -66,14 +76,25 @@ function* finaleScore () {
     }
 }
 
+function* updateFalse () {
+    try {
+        yield axios.patch('/api/players/setFalse')
+    }
+    catch (err) {
+        console.log('error setting made_it to false', err)
+    }
+}
+
 
 function* playerSaga() {
     yield takeLatest ('FETCH_PLAYERS', getPlayers)
     yield takeLatest ('DELETE_PLAYERS', deletePlayers)
     yield takeLatest ('POST_PLAYERS', postPlayers)
-    yield takeLatest ('TOGGLE_MADE_IT', busted)
+    yield takeLatest ('TOGGLE_MADE_IT', madeIt)
     yield takeLatest ('UPDATE_SCORE', updateScore)
     yield takeLatest ('GET_FINALE_SCORE', finaleScore)
+    yield takeLatest ('TOGGLE_BUSTED', busted)
+    yield takeLatest ('UPDATE_FALSE', updateFalse)
 }
 
 export default playerSaga

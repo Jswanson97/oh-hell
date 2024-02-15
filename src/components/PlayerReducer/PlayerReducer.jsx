@@ -7,13 +7,18 @@ import { useDispatch } from "react-redux";
 function PlayerReducer({ row }) {
     const dispatch = useDispatch()
   const [madeIt, setMadeIt] = useState(true);
+  const [busted, setBusted] = useState(true);
   const [input, setInput] = useState("");
-  //console.log("ROW:", row);
-  const handleClick = () => {
+  const handleMadeIt = () => {
     setMadeIt(!madeIt);
-    dispatch({type: 'TOGGLE_MADE_IT', payload: row.id})
-    dispatch({type: 'POST_SCORE'})
+    dispatch({type: 'TOGGLE_MADE_IT', payload: row.id}) 
   };
+
+  const handleBusted = () => {
+    setBusted(!busted);
+    dispatch({type: 'TOGGLE_BUSTED', payload: row.id}) 
+  };
+  
 // calling a saga which will perform an axios.patch() 
 // that sends an ID to the DB which toggles made_it true/false
 
@@ -32,11 +37,18 @@ function PlayerReducer({ row }) {
       </TableCell>
       <TableCell align="right">
         <Button
-          onClick={handleClick}
+          onClick={handleMadeIt}
           variant="contained"
           color={madeIt ? "primary" : "secondary"}
         >
-          {madeIt ? "Made it" : "Busted"}
+          {madeIt ? "Made it" : "Made it"}
+        </Button>
+        <Button
+          onClick={handleBusted}
+          variant="contained"
+          color={busted ? "primary" : "secondary"}
+        >
+          {busted ? "Busted" : "Busted"}
         </Button>
       </TableCell>
     </TableRow>

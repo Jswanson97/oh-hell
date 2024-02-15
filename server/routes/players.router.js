@@ -62,7 +62,7 @@ router.delete("/:id", (req, res) => {
 router.patch("/made_it/:id", (req, res) => {
   const queryText = `
     UPDATE "score"
-    SET "made_it" = NOT "made_it"
+    SET "made_it" = true
     WHERE id=$1;
     `;
     
@@ -72,6 +72,26 @@ router.patch("/made_it/:id", (req, res) => {
     .query(queryText, queryParams)
     .then((result) => {
       console.log('MADE IT')
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      res.sendStatus(500);
+    });
+});
+
+router.patch("/busted/:id", (req, res) => {
+  const queryText = `
+    UPDATE "score"
+    SET "made_it" = false
+    WHERE id=$1;
+    `;
+    
+  const queryParams = [req.params.id];
+  console.log('req.params.id', queryParams)
+  pool
+    .query(queryText, queryParams)
+    .then((result) => {
+      console.log('busted')
       res.sendStatus(201);
     })
     .catch((err) => {
@@ -111,5 +131,20 @@ router.get("/finale", (req, res) => {
     res.sendStatus(500)
   })
 });
+
+router.patch("/setFalse", (req,res) => {
+  const queryText = `
+  UPDATE "score"
+  SET "made_it" = false;
+  `;
+  pool
+  .query(queryText)
+  .then((result) => {
+    res.sendStatus(200)
+  })
+  .catch((err) => {
+    res.sendStatus(500)
+  })
+})
 
 module.exports = router;
