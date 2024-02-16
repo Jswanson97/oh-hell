@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import Button from "@mui/material/Button";
 import { useDispatch } from "react-redux";
 
 function PlayerReducer({ row }) {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const [madeIt, setMadeIt] = useState(true);
   const [busted, setBusted] = useState(true);
   const [input, setInput] = useState("");
@@ -39,14 +39,14 @@ function PlayerReducer({ row }) {
         <Button
           onClick={handleMadeIt}
           variant="contained"
-          color={madeIt ? "primary" : "secondary"}
+          color={"primary"}
         >
           {madeIt ? "Made it" : "Made it"}
         </Button>
         <Button
           onClick={handleBusted}
           variant="contained"
-          color={busted ? "primary" : "secondary"}
+          color={"primary"}
         >
           {busted ? "Busted" : "Busted"}
         </Button>

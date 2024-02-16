@@ -44,7 +44,7 @@ function* madeIt (action) {
         yield axios.patch(`/api/players/made_it/${action.payload}`)
     }
     catch (err) {
-        console.log('error updating made it/ busted', err)
+        console.log('error updating made it', err)
     }
 }
 
@@ -54,7 +54,7 @@ function* busted (action) {
         yield axios.patch(`/api/players/busted/${action.payload}`)
     }
     catch (err) {
-        console.log('error updating made it/ busted', err)
+        console.log('error updating busted', err)
     }
 }
 

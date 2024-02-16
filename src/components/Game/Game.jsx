@@ -15,7 +15,7 @@ import postScoreReducer from "../../redux/reducers/PostScore.reducer";
 function Game() {
   const dispatch = useDispatch();
   const player = useSelector((store) => store.player);
-  const postScore = useSelector((store) => store.postScoreReducer)
+  const postScore = useSelector((store) => store.postScoreReducer);
   const history = useHistory();
 
   useEffect(() => {
@@ -27,12 +27,7 @@ function Game() {
     dispatch({ type: "POST_SCORE" });
   };
 
-  // const createReversedArray = (round) => {
-  //   const gameArray = Array.from({ length: round }, (_, index) => index + 1);
-  //   const reversedArray = gameArray.slice().reverse();
-  //   const combinedArray = reversedArray.concat(gameArray);
-  //   return combinedArray;
-  // };
+ 
 
   const gameTurns = 6;
   const [currentTurn, setCurrentTurn] = useState(gameTurns);
@@ -42,6 +37,7 @@ function Game() {
     //add SQL query here to add score + input
     dispatch({ type: 'UPDATE_SCORE' })
     dispatch({ type: 'UPDATE_FALSE' })
+    getPlayers()
     if (currentTurn > gameTurns * -1) {
       setCurrentTurn(currentTurn - 1);
     } else {

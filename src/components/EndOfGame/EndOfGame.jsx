@@ -13,7 +13,7 @@ function EndOfGame ()  {
     }, []);
 
     const getScore = () => {
-        dispatch({ type: 'GET_FINALE_SCORE'})
+        dispatch({ type: 'FETCH_PLAYER_SCORE'})
     };
 
     const playAgain = () => {

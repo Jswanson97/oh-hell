@@ -4,7 +4,7 @@ import axios from 'axios';
 function* busted (action) {
     try {
         console.log('action.payload:', action.payload)
-        yield axios.patch(`/api/score/${action.payload}`)
+        yield axios.patch(`/api/players/busted/${action.payload}`)
     }
     catch (err) {
         console.log('error updating made it/ busted', err)
@@ -31,7 +31,7 @@ function* postScore (action) {
 }
 
 function* scoreSaga() {
-    yield takeLatest ('TOGGLE_MADE_IT', busted)
+    //yield takeLatest ('TOGGLE_MADE_IT', busted)
     yield takeLatest ('DELETE_ALL_SCORE', deleteScore)
     yield takeEvery ('POST_SCORE', postScore)
 }
