@@ -50,7 +50,7 @@ function Game() {
 
   return (
     <div>
-      <header align="center">Round #{currentTurn == 0 ?'1' : Math.abs(currentTurn)}</header>
+      <h3 align="center">Round #{currentTurn == 0 ?'1' : Math.abs(currentTurn)}</h3>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>

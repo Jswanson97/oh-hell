@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 
 function PostPlayer() {
@@ -35,11 +37,18 @@ function PostPlayer() {
             onChange={(event) => setPlayer(event.target.value)}
             placeholder='Add a player'
             ></input>
-            <button onClick={handleSubmit}>Add player</button>
+            <Stack spacing={2} direction="row">
+            <Button padding="5px" variant="contained" onClick={handleSubmit}>Add player</Button>
+            </Stack>
         </div>
-        <button onClick={submitPlayers}>Start Game</button>
+        <br></br>
+        <Stack spacing={2} direction="row">
+        <Button variant="contained" onClick={submitPlayers}>Start Game</Button>
+        </Stack>
     </div>
   );
 }
 
 export default PostPlayer;
+
+

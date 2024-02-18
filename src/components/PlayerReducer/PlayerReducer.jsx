@@ -44,6 +44,7 @@ function PlayerReducer({ row }) {
           {madeIt ? "Made it" : "Made it"}
         </Button>
         <Button
+          style={{marginLeft: "20px"}}
           onClick={handleBusted}
           variant="contained"
           color={"primary"}
